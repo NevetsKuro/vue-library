@@ -34,3 +34,7 @@ Removing Submodules
 git rm --cached path/to/submodule
 rm -rf path/to/submodule
 ```
+
+Incase, vue-library folder is indexed
+```git rm --cached -r src/vue-library```
+
