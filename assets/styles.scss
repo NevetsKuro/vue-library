@@ -1,0 +1,283 @@
+html {
+  font-size: 15px;
+}
+
+$font-family-sans-serif: 'Nunito Sans', sans-serif;
+$montserrat: 'Nunito Sans', sans-serif;
+$lato: 'Nunito Sans', sans-serif;
+$nunito: 'Nunito Sans', sans-serif;
+$headings-font-weight: 400;
+
+$primary: #27b67c;
+$secondary: #0a2e57;
+$danger: #e57373;
+$lighter-text: #666;
+$navbar-padding-y: 20px;
+
+$link-hover-decoration: none;
+
+$table-border-color: #ccc;
+$light-background-color: #f1f1f1;
+$light-blue-background-color: #f1f9fe;
+
+$card-spacer-y: 1rem;
+$card-spacer-x: 1rem;
+$card-cap-bg: transparent;
+$card-border-width: 0;
+
+$pagination-bg: transparent;
+$pagination-disabled-bg: transparent;
+
+$dc-form-border-color: #eaebf0;
+$dc-label-color: #707070;
+$dc-input-color: #2b2b2b;
+$dc-input-disabled-color: #f6f7f8;
+$dc-input-border-color: #e0e7ff;
+
+$dc-error-bg-color: #fff6f4;
+$dc-error-border-color: #e57373;
+$dc-warning-bg-color: #fff5d7;
+
+$dc-actions-bg: #fafafa;
+$dc-svg: #8798ad;
+$dc-upload: #3560ff;
+
+$background-light: #d9d9d9;
+$bg-cyan: #93d3b9;
+$bg-yellow: #f2b23d;
+$bg-light-blue: #a7c8e1;
+// $input-btn-padding-y: 0.6rem;
+// $input-btn-padding-x: 2rem;
+// $input-btn-line-height: 1.2;
+
+//table
+$grey-text: #5f5f5f;
+
+// v2 stuff.
+$drip-primary: $primary;
+$drip-secondary: $secondary;
+$drip-bg: #fff;
+$drip-gray-1: #91949f;
+$drip-border-color: #eaebf0;
+$drip-card-border-color: #ececec;
+$drip-highlight-grey: #e8e8e8;
+$border-radius: 5px;
+
+// bank container
+$bank-container: #f7f8f7;
+
+// input
+$drip-input-bg: $drip-bg;
+$drip-input-border-radius: 5px;
+$drip-input-border: 1px solid $drip-border-color;
+
+// card
+$drip-card-border: 1px solid $drip-card-border-color;
+$drip-card-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+
+// invoice stages
+$pending-color: #ffc400;
+$processing-color: #00aaff;
+$approved-color: #26ac75;
+$dark-green-color: #0f854d;
+$sky-blue-color: #2782be;
+$advanced-color: #de4a39;
+$paid-color: #5a527b;
+$settled-color: #a3a3a3;
+$drip-red-10: #ffe7e7;
+$dc-error: rgba(253, 207, 207, 0.99);
+$dc-blue: #0a2e57;
+$dc-error: rgba(253, 207, 207, 0.99);
+$drip-red-10: #ffe7e7;
+
+// new colors for redesign
+$light-blue: #daecf7;
+$gray-border: #c4c4c4;
+$gray-color: #b4b4b4;
+$gray-shadow: #b4b4b4c4;
+$pale-white: #e5e5e5;
+$light-green: #d6fdcf;
+$sky-blue: #459ed9;
+
+$wealthy-green-50: #e7f8f2;
+$wealthy-green-400: #26b67c;
+$wealthy-green-500: #26b67f;
+$wealthy-green-600: #1e9263;
+$noble-blue-50: #dae9fb;
+$noble-blue-100: #b5d4f6;
+$noble-blue-200: #6ba8ee;
+$noble-blue-300: #217de5;
+$noble-blue-400: #1355a1;
+$noble-blue-500: #0a2e57;
+$sky-blue-50: #ecf5fb;
+$sky-blue-100: #daecf7;
+$sky-blue-200: #b5d8f0;
+$sky-blue-300: #8fc5e8;
+$sky-blue-400: #6ab1e1;
+$sky-blue-500: #459ed9;
+$sky-blue-600: #2782be;
+$white: #ffffff;
+$light-grey: #c4c4c4;
+$disabled-grey: #6f8298;
+$black: #000000;
+$grey: #f4f6f7;
+$dark-blue: #0a2e57;
+$mustard-yellow-50: #fef7ec;
+$mustard-yellow-100: #fcf0d8;
+$mustard-yellow-400: #f5c164;
+$mustard-yellow-500: #f2b23d;
+$spring-green-50: #e7fcf2;
+$spring-green-100: #d0fae6;
+$spring-green-400: #42ea9a;
+$spring-green-600: #14b266;
+$spring-green-800: #1e8c5f;
+$spring-green-900: #209767;
+$neutral-gray-50: #f7f8f7;
+$neutral-gray-100: #eaedf0;
+$neutral-gray-200: #d5dae1;
+$neutral-gray-500: #95a3b3;
+$orange-50: #faefec;
+$orange-100: #f5e0d9;
+$orange-400: #d68266;
+$orange-500: #cc6340;
+$orange-600: #a94c2d;
+$red-100: #d4b3af;
+$red-400: #de4a39;
+
+$xl-laptop: 2000px;
+$large-laptop: 1440px;
+$laptop: 1280px;
+$large-laptop: 1024px;
+$tablet: 780px;
+$mobile: 360px;
+
+.color-noble-blue-500 {
+  color: $noble-blue-500 !important;
+}
+.color-white {
+  color: $white;
+}
+.color-black {
+  color: $black;
+}
+.color-advanced-red {
+  color: $advanced-color;
+}
+.color-sky-blue-color {
+  color: $sky-blue-color;
+}
+.color-dark-green {
+  color: $dark-green-color;
+}
+.color-wealthy-green-500 {
+  color: $wealthy-green-500;
+}
+.color-noble-blue {
+  color: $noble-blue-500;
+}
+.color-sky-blue-600 {
+  color: $sky-blue-600;
+}
+
+$xl-laptop: 2000px;
+$large-laptop: 1440px;
+$laptop: 1280px;
+$large-laptop: 1024px;
+$tablet: 780px;
+$mobile: 360px;
+
+.drip-h1 {
+  font-family: 'Nunito Sans';
+  font-size: 44px !important;
+  font-style: normal;
+  line-height: 60px;
+  font-weight: 700;
+
+  @media screen and (max-width: $tablet) {
+    font-size: 32px !important;
+    line-height: 42px !important;
+  }
+}
+.drip-h2 {
+  font-family: 'Nunito Sans';
+  font-size: 32px !important;
+  font-style: normal;
+  line-height: 42px;
+  font-weight: 700;
+
+  @media screen and (max-width: $tablet) {
+    font-size: 28px !important;
+    line-height: 32px;
+  }
+}
+.drip-h3 {
+  font-family: 'Nunito Sans';
+  font-size: 24px !important;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 700;
+
+  @media screen and (max-width: $tablet) {
+    font-size: 22px !important;
+    line-height: normal;
+  }
+}
+.drip-h4 {
+  font-family: 'Nunito Sans';
+  font-size: 20px !important;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 700;
+
+  @media screen and (max-width: $tablet) {
+    font-size: 16px !important;
+    line-height: normal;
+  }
+}
+.drip-caption {
+  font-family: 'Nunito Sans';
+  font-size: 18px;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 700;
+
+  @media screen and (max-width: $tablet) {
+    font-size: 16px;
+  }
+}
+.drip-body {
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 700;
+
+  @media screen and (max-width: $tablet) {
+    font-size: 12px;
+    font-style: normal;
+  }
+}
+.drip-body-small {
+  font-family: 'Nunito Sans';
+  font-size: 12px;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 700;
+  @media screen and (max-width: $tablet) {
+    font-size: 10px !important;
+  }
+}
+.drip-label {
+  font-family: 'Nunito Sans';
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 700;
+}
+.drip-validation {
+  font-family: 'Nunito Sans';
+  font-size: 10px;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 700;
+}
