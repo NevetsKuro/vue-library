@@ -16,7 +16,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../ui-library/assets/styles.scss';
+@import './assets/styles.scss';
 .tab-container {
   display: flex;
   flex-direction: row;

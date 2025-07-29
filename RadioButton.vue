@@ -98,10 +98,10 @@ export default {
   .custom-radio:hover + .form-check-label::after {
     content: '';
     position: absolute;
-    left: 5px;
-    top: 7px;
-    width: 10px;
-    height: 10px;
+    left: 4.5px;
+    top: 8px;
+    width: 11px;
+    height: 11px;
     background: white;
     border-radius: 50%;
   }
