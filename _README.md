@@ -11,17 +11,17 @@ This folder contains a shareable Vue.js component library used across multiple p
 # Commands
 
 Add the submodule to a folder
-```git submodule add <repo-url> path/to/submodule-folder```
+`git submodule add <repo-url> path/to/submodule-folder`
 
 Cloning the repo
-```git clone --recurse-submodules <repo-url>```
+`git clone --recurse-submodules <repo-url>`
 
 Updating Submodules
+
 ```
 git submodule update --remote
 git submodule update --remote --merge
 ```
-
 
 ```
 cd path/to/submodule
@@ -40,5 +40,4 @@ rm -rf path/to/submodule
 ```
 
 Incase, vue-library folder is indexed
-```git rm --cached -r src/vue-library```
-
+`git rm --cached -r src/vue-library`
