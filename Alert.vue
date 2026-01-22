@@ -3,22 +3,22 @@
     <div class="alert-icon">
       <img
         v-if="type === 'success'"
-        src="@/assets/images/common/checkmark-with-double-circle.svg"
+        src="@/assets/images/common/check.svg"
         class="mr-2"
       />
       <img
         v-if="type === 'warning'"
-        src="@/assets/images/common/exclamation-triangle.svg"
+        src="@/assets/images/icons/warning-triangle.svg"
         class="mr-2"
       />
       <img
         v-if="type === 'info'"
-        src="@/assets/images/common/exclamation-circle.svg"
+        src="@/assets/images/icons/exclamation-circle.svg"
         class="mr-2"
       />
       <img
         v-if="type === 'danger'"
-        src="@/assets/images/common/cross-with-outline.svg"
+        src="@/assets/images/icons/danger-circle.svg"
         class="mr-2"
       />
     </div>
