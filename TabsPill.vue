@@ -66,7 +66,7 @@ export default {
       return this.disabled || tab.disabled
     },
     hasBadge(tab) {
-      return tab.badge !== undefined && tab.badge !== null
+      return tab.badge !== undefined && tab.badge !== null && tab.badge !== 0
     },
     selectTab(tab) {
       if (this.isDisabled(tab)) {
@@ -85,21 +85,20 @@ export default {
 .tabs-pill {
   display: flex;
   align-items: stretch;
-  width: 75%;
-  @media screen and (max-width: $laptop) {
-    width: 100%;
-  }
+  width: 100%;
   border-bottom: 1px solid $sky-blue-200;
 }
 
 .tabs-pill__tab {
-  max-width: 400px;
+  max-width: 228px;
+  width: 228px;
+  height: 48px;
   outline: 0;
   flex: 1;
   background: $white;
   border: 1px solid $sky-blue-200;
   border-right: 0;
-  padding: 14px 24px;
+  padding: 12px 0px;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease,
     color 0.15s ease, box-shadow 0.15s ease;
@@ -130,6 +129,8 @@ export default {
     .tabs-pill__badge {
       background: $noble-blue-200;
       color: $white;
+      width: 24px;
+      height: 24px;
     }
   }
 
@@ -169,9 +170,8 @@ export default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 32px;
-  height: 32px;
-  padding: 0 10px;
+  min-width: 24px;
+  height: 24px;
   border-radius: 16px;
   background: $sky-blue-300;
   color: $white;
@@ -180,7 +180,7 @@ export default {
 
 @media screen and (max-width: $laptop) {
   .tabs-pill__tab {
-    padding: 12px 32px;
+    padding: 12px 0px;
   }
 }
 </style>
