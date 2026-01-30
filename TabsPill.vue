@@ -85,7 +85,7 @@ export default {
 .tabs-pill {
   display: flex;
   align-items: stretch;
-  width: 88%;
+  width: 75%;
   @media screen and (max-width: $laptop) {
     width: 100%;
   }
@@ -93,6 +93,7 @@ export default {
 }
 
 .tabs-pill__tab {
+  max-width: 400px;
   outline: 0;
   flex: 1;
   background: $white;
