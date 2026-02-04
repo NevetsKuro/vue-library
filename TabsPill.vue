@@ -158,6 +158,9 @@ export default {
   height: 22px;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: $tablet) {
+    display: none;
+  }
 
   img {
     max-width: 100%;
