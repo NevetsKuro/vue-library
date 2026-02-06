@@ -53,11 +53,10 @@ export default {
 <style lang="scss" scoped>
 .alert {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   padding: 16px;
   border-radius: 8px;
   color: $noble-blue-500;
-  align-items: center;
 
   &-success {
     background: $spring-green-100;
@@ -70,8 +69,8 @@ export default {
   }
 
   &-danger {
-    background: #f9eae9;
-    border: 2px solid #e8c6c4;
+    background: $orange-100;
+    border: 2px solid $orange-600;
   }
   &-info {
     background: $noble-blue-50;
