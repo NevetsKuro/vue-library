@@ -23,10 +23,13 @@
           :is="tab.iconComponent"
           class="tabs-pill__icon"
         />
-        <span class="tabs-pill__label drip-label font-weight-normal">{{
-          tab.label
-        }}</span>
-        <span v-if="hasBadge(tab)" class="tabs-pill__badge drip-label">
+        <span class="tabs-pill__label drip-label font-weight-normal">
+          {{ tab.label }}
+        </span>
+        <span
+          v-if="hasBadge(tab) && tab.badge"
+          class="tabs-pill__badge drip-label"
+        >
           {{ tab.badge }}
         </span>
       </div>
@@ -85,20 +88,20 @@ export default {
 .tabs-pill {
   display: flex;
   align-items: stretch;
-  width: 88%;
-  @media screen and (max-width: $laptop) {
-    width: 100%;
-  }
+  width: 100%;
   border-bottom: 1px solid $sky-blue-200;
 }
 
 .tabs-pill__tab {
   outline: 0;
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: $white;
   border: 1px solid $sky-blue-200;
   border-right: 0;
-  padding: 14px 24px;
+  padding: 12px 24px;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease,
     color 0.15s ease, box-shadow 0.15s ease;
@@ -106,6 +109,8 @@ export default {
   font-weight: 600;
   text-align: left;
   border-radius: 12px 12px 0 0;
+  min-width: 228px;
+  height: 48px;
 
   &:first-child {
     border-top-left-radius: 12px;
