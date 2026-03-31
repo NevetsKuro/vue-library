@@ -42,7 +42,7 @@ export default {
       default: ''
     },
     value: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     rules: {
@@ -52,7 +52,7 @@ export default {
   },
   data() {
     return {
-      inputValue: this.value
+      inputValue: this.value != null ? String(this.value) : ''
     }
   },
   watch: {
@@ -60,7 +60,7 @@ export default {
       this.$emit('input', val)
     },
     value(val) {
-      this.inputValue = val
+      this.inputValue = val != null ? String(val) : ''
     }
   },
   inject: ['$validator']
