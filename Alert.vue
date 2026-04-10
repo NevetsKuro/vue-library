@@ -1,25 +1,18 @@
 <template>
   <div class="alert" :class="`alert-${type}`">
     <div class="alert-icon">
-      <img
-        v-if="type === 'success'"
-        src="@/assets/images/common/check.svg"
-        class="mr-2"
-      />
+      <img v-if="type === 'success'" src="@/assets/images/common/check.svg" />
       <img
         v-if="type === 'warning'"
         src="@/assets/images/icons/warning-triangle.svg"
-        class="mr-2"
       />
       <img
         v-if="type === 'info'"
         src="@/assets/images/icons/exclamation-circle.svg"
-        class="mr-2"
       />
       <img
         v-if="type === 'danger'"
         src="@/assets/images/icons/danger-circle.svg"
-        class="mr-2"
       />
     </div>
     <div class="alert-content">
@@ -60,21 +53,21 @@ export default {
 
   &-success {
     background: $spring-green-100;
-    border: 2px solid $spring-green-600;
+    border: 1px solid $spring-green-600;
   }
 
   &-warning {
     background: $mustard-yellow-50;
-    border: 2px solid $mustard-yellow-500;
+    border: 1px solid $mustard-yellow-500;
   }
 
   &-danger {
     background: $orange-100;
-    border: 2px solid $orange-600;
+    border: 1px solid $orange-600;
   }
   &-info {
-    background: $noble-blue-50;
-    border: 2px solid $sky-blue-500;
+    background: $sky-blue-100;
+    border: 1px solid $sky-blue-500;
   }
 }
 
