@@ -65,6 +65,10 @@ export default {
   width: 100%;
   cursor: pointer;
 
+  &:hover {
+    background: $noble-blue-100;
+  }
+
   &--disabled {
     opacity: 0.5;
     cursor: not-allowed;
