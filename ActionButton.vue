@@ -111,6 +111,11 @@ export default {
       border-color: $wealthy-green-600 !important;
       outline: 0;
     }
+    &.disabled {
+      background: $white;
+      color: $neutral-gray-500;
+      border: 2px solid $neutral-gray-500;
+    }
   }
   &.text {
     border: 2px solid transparent;
@@ -123,6 +128,11 @@ export default {
       border-color: $wealthy-green-50 !important;
       text-decoration: underline;
       outline: 0;
+    }
+    &.disabled {
+      background: $white;
+      color: $neutral-gray-500;
+      border: 2px solid $white;
     }
   }
 }
