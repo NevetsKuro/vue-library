@@ -95,7 +95,7 @@ export default {
 .alert {
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: 12px;
   border-radius: 8px;
   gap: 0;
   color: $noble-blue-500;
@@ -208,7 +208,7 @@ export default {
 }
 
 .alert-subtitle {
-  margin-top: 8px;
+  margin-top: 4px;
   font-size: 14px;
   font-weight: 400;
   color: $noble-blue-500;
