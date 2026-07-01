@@ -3,7 +3,10 @@
     <div class="input-label">
       {{ label }}
     </div>
-    <div class="input-block width-800">
+    <div v-if="helpText" class="expandable-section">
+      {{ helpText }}
+    </div>
+    <div class="input-block">
       <multiselect
         :id="name"
         :name="name"
@@ -12,6 +15,7 @@
         v-model="currencyValue"
         v-validate="rules"
         class="drip-dropdown"
+        :style="{ width: inputWidth }"
         :options="options"
         :show-labels="false"
         selectLabel=""
@@ -77,6 +81,14 @@ export default {
     rules: {
       type: String,
       default: 'required'
+    },
+    helpText: {
+      type: String,
+      default: ''
+    },
+    inputWidth: {
+      type: String,
+      default: '400px'
     }
   },
   data() {
@@ -107,6 +119,16 @@ export default {
 .input-container {
   width: 100%;
   margin-bottom: 16px;
+
+  &:focus-within {
+    .expandable-section {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+  }
+
   .input-label {
     font-size: 14px;
     font-weight: 400;
@@ -121,9 +143,8 @@ export default {
     flex-direction: column;
     .drip-dropdown {
       height: 56px;
-      width: 400px;
       @media screen and (max-width: 768px) {
-        width: 100%;
+        width: 100% !important;
       }
       .action-input {
         position: absolute;
@@ -208,6 +229,19 @@ export default {
         margin-top: 2px;
       }
     }
+  }
+
+  .expandable-section {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.8s ease-in-out;
+    max-width: 400px;
+    font-size: 12px;
+    padding-left: 8px;
+    margin-bottom: 0px;
+    color: $noble-blue-500;
+    border-left: 4px solid $noble-blue-400;
   }
 }
 </style>

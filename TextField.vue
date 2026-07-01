@@ -6,7 +6,7 @@
     <div v-if="helpText" class="expandable-section">
       {{ helpText }}
     </div>
-    <div class="input-block width-800">
+    <div class="input-block">
       <input
         :id="id"
         :name="name"
@@ -16,6 +16,8 @@
         v-validate="rules"
         v-model="inputValue"
         :class="{ 'input-error': errors.has(name) }"
+        :style="{ width: inputWidth }"
+        :readonly="readonly"
       />
       <span v-if="errors.has(name)" class="error">
         {{ errors.first(name) }}
@@ -55,6 +57,14 @@ export default {
     helpText: {
       type: String,
       default: ''
+    },
+    inputWidth: {
+      type: String,
+      default: '400px'
+    },
+    readonly: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -116,7 +126,6 @@ export default {
     }
     input {
       outline: 0px;
-      width: 400px;
       height: 56px;
       padding: 16px;
       border-radius: 8px;
@@ -132,11 +141,20 @@ export default {
       &:focus {
         border: 1px solid $noble-blue-300;
       }
+      &[readonly] {
+        background-color: $neutral-gray-50;
+        color: $neutral-gray-600;
+        cursor: not-allowed;
+        &:active,
+        &:focus {
+          border: 1px solid $noble-blue-500;
+        }
+      }
       &.width-800 {
-        width: 808px;
+        width: 808px !important;
       }
       @media screen and (max-width: 768px) {
-        width: 100%;
+        width: 100% !important;
       }
     }
     .error {
@@ -151,19 +169,19 @@ export default {
         margin-top: 2px;
       }
     }
+  }
 
-    .expandable-section {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: all 0.8s ease-in-out;
-      max-width: 400px;
-      font-size: 12px;
-      padding-left: 8px;
-      margin-bottom: 0px;
-      color: $noble-blue-500;
-      border-left: 4px solid $noble-blue-400;
-    }
+  .expandable-section {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.8s ease-in-out;
+    max-width: 400px;
+    font-size: 12px;
+    padding-left: 8px;
+    margin-bottom: 0px;
+    color: $noble-blue-500;
+    border-left: 4px solid $noble-blue-400;
   }
 }
 </style>
