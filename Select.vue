@@ -79,7 +79,7 @@ export default {
       default: 'Enter...'
     },
     value: {
-      type: String,
+      type: [String, Object],
       default: ''
     },
     options: {
