@@ -14,9 +14,13 @@
         :placeholder="placeholder"
         v-model="currencyValue"
         v-validate="rules"
-        class="drip-dropdown"
+        :disabled="readonly"
+        :class="['drip-dropdown', { 'read-only': readonly }]"
         :style="{ width: inputWidth }"
         :options="options"
+        :track-by="trackBy || undefined"
+        :label="optionLabel || undefined"
+        :allow-empty="allowEmpty"
         :show-labels="false"
         selectLabel=""
         selectedLabel=""
@@ -24,8 +28,16 @@
         @open="isOpen = true"
         @close="isOpen = false"
       >
+        <template v-slot:singleLabel="{ option }">
+          <slot name="singleLabel" :option="option">{{
+            optionLabel && option ? option[optionLabel] : option
+          }}</slot>
+        </template>
+
         <template slot="option" slot-scope="{ option }">
-          {{ option }}
+          <slot name="option" :option="option">{{
+            optionLabel && option ? option[optionLabel] : option
+          }}</slot>
         </template>
 
         <template slot="caret">
@@ -89,6 +101,22 @@ export default {
     inputWidth: {
       type: String,
       default: '400px'
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    trackBy: {
+      type: String,
+      default: ''
+    },
+    optionLabel: {
+      type: String,
+      default: ''
+    },
+    allowEmpty: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -145,6 +173,29 @@ export default {
       height: 56px;
       @media screen and (max-width: 768px) {
         width: 100% !important;
+      }
+      &.read-only {
+        cursor: not-allowed;
+        ::v-deep .multiselect--disabled {
+          background: transparent;
+          opacity: 1;
+          pointer-events: none;
+        }
+        ::v-deep .multiselect__tags {
+          background-color: $neutral-gray-50;
+          border: 1px solid $noble-blue-500;
+          padding-right: 16px;
+          .multiselect__single {
+            color: $neutral-gray-600;
+            background: transparent;
+          }
+        }
+        ::v-deep .multiselect__select {
+          display: none;
+        }
+        .action-input {
+          display: none;
+        }
       }
       .action-input {
         position: absolute;

@@ -66,6 +66,9 @@
     <div class="alert-content">
       <div class="alert-title">{{ title }}</div>
       <div v-if="subtitle" class="alert-subtitle">{{ subtitle }}</div>
+      <template v-if="$slots.subtext">
+        <slot name="subtext" class="alert-subtext"></slot>
+      </template>
     </div>
   </div>
 </template>
@@ -94,7 +97,7 @@ export default {
 <style lang="scss" scoped>
 .alert {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 12px;
   border-radius: 8px;
   gap: 0;
@@ -209,6 +212,11 @@ export default {
 
 .alert-subtitle {
   margin-top: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  color: $noble-blue-500;
+}
+.alert-subtext {
   font-size: 14px;
   font-weight: 400;
   color: $noble-blue-500;
