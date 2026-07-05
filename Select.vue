@@ -15,7 +15,7 @@
         v-model="currencyValue"
         v-validate="rules"
         :disabled="readonly"
-        :class="['drip-dropdown', { 'read-only': readonly }]"
+        :class="computedClasses"
         :style="{ width: inputWidth }"
         :options="options"
         :track-by="trackBy || undefined"
@@ -125,6 +125,11 @@ export default {
       currencyValue: this.value
     }
   },
+  computed: {
+    computedClasses() {
+      return ['drip-dropdown', { 'read-only': this.readonly }]
+    }
+  },
   watch: {
     currencyValue(val) {
       this.$emit('input', val) // Enables v-model syncing
@@ -179,12 +184,17 @@ export default {
         ::v-deep .multiselect--disabled {
           background: transparent;
           opacity: 1;
-          pointer-events: none;
+          pointer-events: auto !important;
         }
         ::v-deep .multiselect__tags {
           background-color: $neutral-gray-50;
           border: 1px solid $noble-blue-500;
           padding-right: 16px;
+          cursor: not-allowed;
+          &:hover {
+            border: 1px solid $noble-blue-500;
+            cursor: not-allowed;
+          }
           .multiselect__single {
             color: $neutral-gray-600;
             background: transparent;

@@ -8,16 +8,18 @@
     </div>
     <div class="input-block">
       <input
-        :id="id"
+        :id="id || name"
         :name="name"
         :data-vv-as="label"
         type="text"
         :placeholder="placeholder"
         v-validate="rules"
+        :data-vv-validate-on="validateOn"
         v-model="inputValue"
         :class="{ 'input-error': errors.has(name) }"
         :style="{ width: inputWidth }"
         :readonly="readonly"
+        @blur="onBlur"
       />
       <span v-if="errors.has(name)" class="error">
         {{ errors.first(name) }}
@@ -40,7 +42,7 @@ export default {
     },
     id: {
       type: String,
-      default: 'inputId'
+      default: ''
     },
     placeholder: {
       type: String,
@@ -65,6 +67,10 @@ export default {
     readonly: {
       type: Boolean,
       default: false
+    },
+    validateOn: {
+      type: String,
+      default: 'input|blur'
     }
   },
   data() {
@@ -78,6 +84,12 @@ export default {
     },
     value(val) {
       this.inputValue = val != null ? String(val) : ''
+    }
+  },
+  methods: {
+    onBlur(e) {
+      this.$validator.validate(this.name)
+      this.$emit('blur', e)
     }
   },
   inject: ['$validator']
