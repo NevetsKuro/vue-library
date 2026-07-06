@@ -14,7 +14,6 @@
         :placeholder="placeholder"
         v-model="currencyValue"
         v-validate="rules"
-        :disabled="readonly"
         :class="computedClasses"
         :style="{ width: inputWidth }"
         :options="options"
@@ -181,16 +180,15 @@ export default {
       }
       &.read-only {
         cursor: not-allowed;
-        ::v-deep .multiselect--disabled {
-          background: transparent;
-          opacity: 1;
-          pointer-events: auto !important;
-        }
+        pointer-events: none;
+        // Block interaction without vue-multiselect's `disabled` prop (which
+        // adds .multiselect--disabled and a mismatched look vs TextField)
         ::v-deep .multiselect__tags {
           background-color: $neutral-gray-50;
           border: 1px solid $noble-blue-500;
           padding-right: 16px;
           cursor: not-allowed;
+          pointer-events: none;
           &:hover {
             border: 1px solid $noble-blue-500;
             cursor: not-allowed;
