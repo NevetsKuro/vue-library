@@ -1,8 +1,32 @@
 <template>
-  <div class="dialog-position" @click="closeBackdrop">
+  <div v-if="showDialog" class="dialog-position" @click="closeBackdrop">
     <div class="dialog-container" :style="`max-width: ${dialogWidth}`">
-      <div class="close drip-text-button" @click="closeDialog">
-        <b-icon-x scale="1.6" class="color-wealthy-green-500" />
+      <div
+        class="close drip-text-button"
+        role="button"
+        tabindex="0"
+        aria-label="Close dialog"
+        @click="closeDialog"
+        @keydown.enter="closeDialog"
+        @keydown.space.prevent="closeDialog"
+      >
+        <svg
+          width="26"
+          height="26"
+          viewBox="0 0 24 24"
+          fill="none"
+          class="color-wealthy-green-500"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M18 6L6 18M6 6l12 12"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
       </div>
       <div class="dialog-content">
         <slot name="content"></slot>
@@ -29,17 +53,32 @@ export default {
       default: '480px'
     }
   },
+  mounted() {
+    document.addEventListener('keydown', this.handleKeydown)
+  },
+  beforeDestroy() {
+    document.removeEventListener('keydown', this.handleKeydown)
+  },
   methods: {
     confirmDialog() {
       this.$emit('confirm')
     },
     closeBackdrop(e) {
-      if (e.target && e.target.getAttribute('class') === 'dialog-position') {
+      // Compare against currentTarget (the backdrop the listener is bound to)
+      // rather than matching the class string exactly — callers may add their
+      // own class (e.g. "steps-dialog") which Vue merges onto this root
+      // element and would break an exact class-attribute match.
+      if (e.target === e.currentTarget) {
         this.$emit('close')
       }
     },
     closeDialog() {
       this.$emit('close')
+    },
+    handleKeydown(e) {
+      if (e.key === 'Escape' && this.showDialog) {
+        this.$emit('close')
+      }
     }
   }
 }
@@ -74,7 +113,6 @@ export default {
     max-height: calc(100% - 64px);
     max-width: 480px;
     padding: 32px;
-    padding-top: 64px;
     .close {
       position: absolute;
       top: 24px;
@@ -84,6 +122,13 @@ export default {
       font-size: 16px;
       color: $wealthy-green-500;
       cursor: pointer;
+      display: inline-flex;
+      border-radius: 6px;
+
+      &:focus-visible {
+        outline: 2px solid $wealthy-green-500;
+        outline-offset: 2px;
+      }
     }
     h4 {
       font-weight: 700;

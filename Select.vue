@@ -3,7 +3,10 @@
     <div class="input-label">
       {{ label }}
     </div>
-    <div class="input-block width-800">
+    <div v-if="helpText" class="expandable-section">
+      {{ helpText }}
+    </div>
+    <div class="input-block">
       <multiselect
         :id="name"
         :name="name"
@@ -11,8 +14,12 @@
         :placeholder="placeholder"
         v-model="currencyValue"
         v-validate="rules"
-        class="drip-dropdown"
+        :class="computedClasses"
+        :style="{ width: inputWidth }"
         :options="options"
+        :track-by="trackBy || undefined"
+        :label="optionLabel || undefined"
+        :allow-empty="allowEmpty"
         :show-labels="false"
         selectLabel=""
         selectedLabel=""
@@ -20,8 +27,16 @@
         @open="isOpen = true"
         @close="isOpen = false"
       >
+        <template v-slot:singleLabel="{ option }">
+          <slot name="singleLabel" :option="option">{{
+            optionLabel && option ? option[optionLabel] : option
+          }}</slot>
+        </template>
+
         <template slot="option" slot-scope="{ option }">
-          {{ option }}
+          <slot name="option" :option="option">{{
+            optionLabel && option ? option[optionLabel] : option
+          }}</slot>
         </template>
 
         <template slot="caret">
@@ -63,7 +78,7 @@ export default {
       default: 'Enter...'
     },
     value: {
-      type: String,
+      type: [String, Object],
       default: ''
     },
     options: {
@@ -77,12 +92,41 @@ export default {
     rules: {
       type: String,
       default: 'required'
+    },
+    helpText: {
+      type: String,
+      default: ''
+    },
+    inputWidth: {
+      type: String,
+      default: '400px'
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    trackBy: {
+      type: String,
+      default: ''
+    },
+    optionLabel: {
+      type: String,
+      default: ''
+    },
+    allowEmpty: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
     return {
       isOpen: false,
       currencyValue: this.value
+    }
+  },
+  computed: {
+    computedClasses() {
+      return ['drip-dropdown', { 'read-only': this.readonly }]
     }
   },
   watch: {
@@ -107,6 +151,16 @@ export default {
 .input-container {
   width: 100%;
   margin-bottom: 16px;
+
+  &:focus-within {
+    .expandable-section {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+  }
+
   .input-label {
     font-size: 14px;
     font-weight: 400;
@@ -121,9 +175,35 @@ export default {
     flex-direction: column;
     .drip-dropdown {
       height: 56px;
-      width: 400px;
       @media screen and (max-width: 768px) {
-        width: 100%;
+        width: 100% !important;
+      }
+      &.read-only {
+        cursor: not-allowed;
+        pointer-events: none;
+        // Block interaction without vue-multiselect's `disabled` prop (which
+        // adds .multiselect--disabled and a mismatched look vs TextField)
+        ::v-deep .multiselect__tags {
+          background-color: $neutral-gray-50;
+          border: 1px solid $noble-blue-500;
+          padding-right: 16px;
+          cursor: not-allowed;
+          pointer-events: none;
+          &:hover {
+            border: 1px solid $noble-blue-500;
+            cursor: not-allowed;
+          }
+          .multiselect__single {
+            color: $neutral-gray-600;
+            background: transparent;
+          }
+        }
+        ::v-deep .multiselect__select {
+          display: none;
+        }
+        .action-input {
+          display: none;
+        }
       }
       .action-input {
         position: absolute;
@@ -208,6 +288,19 @@ export default {
         margin-top: 2px;
       }
     }
+  }
+
+  .expandable-section {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.8s ease-in-out;
+    max-width: 400px;
+    font-size: 12px;
+    padding-left: 8px;
+    margin-bottom: 0px;
+    color: $noble-blue-500;
+    border-left: 4px solid $noble-blue-400;
   }
 }
 </style>

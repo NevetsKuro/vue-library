@@ -55,6 +55,7 @@ export default {
   font-weight: 700;
   height: 56px;
   border-radius: 8px;
+  text-decoration: none;
   &.removeVerticalPadding {
     padding-left: 4px !important;
     padding-right: 4px !important;
@@ -85,6 +86,7 @@ export default {
     color: $white;
     &:active,
     &:hover {
+      text-decoration: none;
       background: $wealthy-green-600 !important;
       color: $white !important;
       border-color: $wealthy-green-600 !important;
@@ -106,10 +108,16 @@ export default {
     background: $white;
     &:active,
     &:hover {
+      text-decoration: none;
       background: $wealthy-green-50 !important;
       color: $wealthy-green-600 !important;
       border-color: $wealthy-green-600 !important;
       outline: 0;
+    }
+    &.disabled {
+      background: $white;
+      color: $neutral-gray-500;
+      border: 2px solid $neutral-gray-500;
     }
   }
   &.text {
@@ -118,11 +126,17 @@ export default {
     background: transparent;
     &:active,
     &:hover {
+      text-decoration: none;
       background: $wealthy-green-50 !important;
       color: $wealthy-green-600 !important;
       border-color: $wealthy-green-50 !important;
       text-decoration: underline;
       outline: 0;
+    }
+    &.disabled {
+      background: $white;
+      color: $neutral-gray-500;
+      border: 2px solid $white;
     }
   }
 }

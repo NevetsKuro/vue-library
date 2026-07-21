@@ -14,7 +14,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import './../assets/scss/palette';
 .chip-wrapper {
   display: flex;
   align-items: center;

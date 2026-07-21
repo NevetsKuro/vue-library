@@ -38,7 +38,7 @@ export default {
     },
     color: {
       type: String,
-      default: ''
+      default: 'noble-blue-500'
     },
     fontWeight: {
       type: String,
