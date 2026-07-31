@@ -66,7 +66,8 @@ export default {
 
   &.small {
     font-size: 12px;
-    padding: 16px 8px;
+    padding: 8px 16px;
+    height: 40px;
   }
   &.medium {
     font-size: 16px;
