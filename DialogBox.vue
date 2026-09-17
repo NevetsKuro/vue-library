@@ -190,7 +190,7 @@ export default {
     margin: auto;
     margin-top: 12px;
     margin-bottom: 24px;
-    white-space: pre-wrap;
+    // white-space: pre-wrap;
   }
 }
 </style>
