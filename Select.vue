@@ -40,6 +40,41 @@
         </template>
 
         <template slot="caret">
+          <svg
+            v-if="isOpen"
+            class="action-input inverse"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13.28 5.96667L8.9333 10.3133C8.41997 10.8267 7.57997 10.8267 7.06664 10.3133L2.71997 5.96667"
+              stroke="#121212"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg
+            v-else
+            class="action-input"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13.28 5.96667L8.9333 10.3133C8.41997 10.8267 7.57997 10.8267 7.06664 10.3133L2.71997 5.96667"
+              stroke="#121212"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <!-- 
           <img
             v-if="isOpen"
             src="@/assets/images/icons/chevron-down.svg"
@@ -51,7 +86,7 @@
             src="@/assets/images/icons/chevron-down.svg"
             alt="caret"
             class="action-input inverse"
-          />
+          /> -->
         </template>
       </multiselect>
 
@@ -208,14 +243,12 @@ export default {
       .action-input {
         position: absolute;
         cursor: pointer;
-        right: 0;
-        padding-left: 1rem;
-        padding-right: 1rem;
         line-height: 2.6rem;
         font-size: 1.2rem;
         border-bottom-right-radius: 5px;
         border-top-right-radius: 5px;
-        top: 1.6rem;
+        top: 20px;
+        right: 12px;
         &.inverse {
           transform: rotate(180deg);
         }
